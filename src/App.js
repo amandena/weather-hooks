@@ -5,7 +5,7 @@ import Weather from './components/Weather'
 
 function App() {
   const [weather, setWeather] = useState([])
-  const APIKEY = '24ffdfdd664d7e8bbc57efbbac334b74'
+  const APIKEY = 'daaf5734762b2d919790979e7f09aba1'
 
   async function fetchData(e) {
     e.preventDefault()
