@@ -9,19 +9,40 @@ function App() {
 
   async function fetchData(e) {
     e.preventDefault()
-    const apiData = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=${APIKEY}`)
+    const city = e.target.elements.city.value
+    const country = e.target.elements.country.value
+    const apiData = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${APIKEY}`)
       .then( res => res.json())
       .then(data => data)
+      if(city && country) {
       setWeather({
-        data: apiData
-      })
+        data: apiData,
+        city: apiData.city,
+        country: apiData.sys.country,
+        description: apiData.weather[0].description,
+        temperature: apiData.main.temp,
+        error:""
+      }
+      )} else {
+        setWeather({
+          data: '',
+          city: '',
+          country: '',
+          description: '',
+          temperature: '',
+          error:"Please Type A City And Country"
+      }
+      )}
   }
 
   return (
     <div className="App">
       <h3>WEATHER APP</h3>
+
       <Form getWeather={fetchData}/>
+
       {console.log(weather.data)}
+
       <Weather
         city={weather.city}
         country={weather.country}
