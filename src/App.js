@@ -20,7 +20,7 @@ function App() {
         city: apiData.city,
         country: apiData.sys.country,
         description: apiData.weather[0].description,
-        temperature: apiData.main.temp,
+        temperature: Math.round(apiData.main.temp * 9/5 - 459.67),
         error:""
       }
       )} else {
