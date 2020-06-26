@@ -22,7 +22,13 @@ function App() {
       <h3>WEATHER APP</h3>
       <Form getWeather={fetchData}/>
       {console.log(weather.data)}
-      <Weather/>
+      <Weather
+        city={weather.city}
+        country={weather.country}
+        description={weather.description}
+        temperature={weather.temperature}
+        error={weather.error}
+      />
     </div>
   )
 }
